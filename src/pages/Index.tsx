@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -85,26 +84,41 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 text-slate-100 overflow-x-hidden">
+      {/* Animated background particles */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-2 h-2 bg-blue-400 rounded-full animate-float opacity-60"></div>
+        <div className="absolute top-40 right-20 w-1 h-1 bg-purple-400 rounded-full animate-float opacity-40" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-40 left-1/4 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-float opacity-50" style={{animationDelay: '4s'}}></div>
+        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-indigo-400 rounded-full animate-float opacity-30" style={{animationDelay: '1s'}}></div>
+        <div className="absolute bottom-20 right-10 w-2 h-2 bg-violet-400 rounded-full animate-float opacity-40" style={{animationDelay: '3s'}}></div>
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-slate-900/80 backdrop-blur-md z-50 border-b border-slate-800">
+      <nav className="fixed top-0 w-full bg-slate-900/90 backdrop-blur-md z-50 border-b border-slate-800/50 transition-all duration-300">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-xl font-bold text-white">SHALU PUNDIR</div>
+            <div className="text-xl font-bold text-transparent bg-tech-gradient bg-clip-text animate-glow">
+              SHALU PUNDIR
+            </div>
             <div className="hidden md:flex space-x-8">
               {['Home', 'About', 'Skills', 'Projects', 'Experience', 'Services', 'Contact'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className={`text-sm transition-colors hover:text-blue-400 ${
-                    activeSection === item.toLowerCase() ? 'text-blue-400' : 'text-slate-300'
+                  className={`text-sm transition-all duration-300 hover:text-blue-400 hover:scale-110 ${
+                    activeSection === item.toLowerCase() ? 'text-blue-400 scale-110' : 'text-slate-300'
                   }`}
                 >
                   {item}
                 </a>
               ))}
             </div>
-            <Button variant="outline" size="sm" className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25"
+            >
               Book a call
             </Button>
           </div>
@@ -112,56 +126,69 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 px-6">
+      <section id="home" className="pt-32 pb-20 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+            <div className="space-y-8 animate-fade-in-up">
               <div className="space-y-4">
-                <Badge className="bg-green-500/20 text-green-400 border-green-500/50">
+                <Badge className="bg-green-500/20 text-green-400 border-green-500/50 animate-pulse">
                   • AVAILABLE FOR WORK
                 </Badge>
-                <h1 className="text-5xl lg:text-6xl font-bold">
+                <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
                   Hi, I'm a<br />
-                  <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                  <span className="bg-tech-gradient bg-clip-text text-transparent animate-glow">
                     MERN Stack
                   </span><br />
                   developer
                 </h1>
-                <p className="text-lg text-slate-400 max-w-md">
+                <p className="text-lg text-slate-400 max-w-md leading-relaxed">
                   With 3+ years of experience crafting scalable backend systems, secure APIs, 
                   and real-time web applications for startups and enterprises.
                 </p>
               </div>
               
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+                <Button 
+                  size="lg" 
+                  className="bg-tech-gradient hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105"
+                >
                   <Download className="w-4 h-4 mr-2" />
                   View Resume
                 </Button>
-                <Button variant="outline" size="lg" className="border-slate-600 text-slate-300 hover:bg-slate-800">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-slate-600 text-slate-300 hover:bg-slate-800 hover:border-blue-500 transition-all duration-300 hover:scale-105"
+                >
                   Contact Me
                 </Button>
               </div>
 
               <div className="flex space-x-4">
-                <a href="https://github.com/spDev-stack" className="text-slate-400 hover:text-blue-400 transition-colors">
-                  <Github className="w-6 h-6" />
-                </a>
-                <a href="https://linkedin.com/in/shalupundir" className="text-slate-400 hover:text-blue-400 transition-colors">
-                  <Linkedin className="w-6 h-6" />
-                </a>
-                <a href="mailto:shaluthakur4254@gmail.com" className="text-slate-400 hover:text-blue-400 transition-colors">
-                  <Mail className="w-6 h-6" />
-                </a>
+                {[
+                  { icon: Github, href: "https://github.com/spDev-stack" },
+                  { icon: Linkedin, href: "https://linkedin.com/in/shalupundir" },
+                  { icon: Mail, href: "mailto:shaluthakur4254@gmail.com" }
+                ].map(({ icon: Icon, href }, index) => (
+                  <a 
+                    key={index}
+                    href={href} 
+                    className="text-slate-400 hover:text-blue-400 transition-all duration-300 hover:scale-125 hover:rotate-12"
+                  >
+                    <Icon className="w-6 h-6" />
+                  </a>
+                ))}
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative animate-fade-in-up" style={{animationDelay: '0.3s'}}>
               <div className="relative w-80 h-80 mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-pulse opacity-20"></div>
-                <div className="absolute inset-4 bg-slate-800 rounded-full flex items-center justify-center">
-                  <Code2 className="w-32 h-32 text-blue-400" />
+                <div className="absolute inset-0 bg-tech-gradient rounded-full animate-glow opacity-20"></div>
+                <div className="absolute inset-4 bg-slate-800/90 backdrop-blur-sm rounded-full flex items-center justify-center border border-slate-700/50">
+                  <Code2 className="w-32 h-32 text-blue-400 animate-float" />
                 </div>
+                <div className="absolute top-10 right-10 w-4 h-4 bg-purple-400 rounded-full animate-float opacity-60"></div>
+                <div className="absolute bottom-16 left-8 w-3 h-3 bg-cyan-400 rounded-full animate-float opacity-50" style={{animationDelay: '2s'}}></div>
               </div>
             </div>
           </div>
@@ -169,9 +196,11 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-slate-800/50">
+      <section id="about" className="py-20 px-6 bg-slate-800/30 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">About Me</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center text-transparent bg-tech-gradient bg-clip-text">
+            About Me
+          </h2>
           <div className="grid lg:grid-cols-2 gap-12">
             <div className="space-y-6">
               <p className="text-lg text-slate-300 leading-relaxed">
@@ -208,104 +237,84 @@ const Index = () => {
       {/* Skills Section */}
       <section id="skills" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Technical Skills</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center text-transparent bg-tech-gradient bg-clip-text">
+            Technical Skills
+          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="bg-slate-800 border-slate-700 hover:border-blue-500 transition-colors">
-              <CardHeader className="text-center">
-                <Code2 className="w-12 h-12 text-blue-400 mx-auto mb-2" />
-                <CardTitle className="text-blue-400">Frontend</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  {skills.frontend.map((skill) => (
-                    <Badge key={skill} variant="outline" className="mr-2 mb-2">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-slate-800 border-slate-700 hover:border-purple-500 transition-colors">
-              <CardHeader className="text-center">
-                <Server className="w-12 h-12 text-purple-400 mx-auto mb-2" />
-                <CardTitle className="text-purple-400">Backend</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  {skills.backend.map((skill) => (
-                    <Badge key={skill} variant="outline" className="mr-2 mb-2">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-slate-800 border-slate-700 hover:border-green-500 transition-colors">
-              <CardHeader className="text-center">
-                <Database className="w-12 h-12 text-green-400 mx-auto mb-2" />
-                <CardTitle className="text-green-400">Database</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  {skills.database.map((skill) => (
-                    <Badge key={skill} variant="outline" className="mr-2 mb-2">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-slate-800 border-slate-700 hover:border-cyan-500 transition-colors">
-              <CardHeader className="text-center">
-                <Cloud className="w-12 h-12 text-cyan-400 mx-auto mb-2" />
-                <CardTitle className="text-cyan-400">Cloud & Tools</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  {skills.cloud.map((skill) => (
-                    <Badge key={skill} variant="outline" className="mr-2 mb-2">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            {[
+              { title: "Frontend", icon: Code2, color: "blue", skills: skills.frontend },
+              { title: "Backend", icon: Server, color: "purple", skills: skills.backend },
+              { title: "Database", icon: Database, color: "green", skills: skills.database },
+              { title: "Cloud & Tools", icon: Cloud, color: "cyan", skills: skills.cloud }
+            ].map(({ title, icon: Icon, color, skills: skillList }, index) => (
+              <Card 
+                key={title}
+                className="bg-slate-800/50 backdrop-blur-sm border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/10 group animate-fade-in-up"
+                style={{animationDelay: `${index * 0.1}s`}}
+              >
+                <CardHeader className="text-center pb-4">
+                  <Icon className={`w-12 h-12 text-${color}-400 mx-auto mb-2 group-hover:scale-110 transition-transform duration-300`} />
+                  <CardTitle className={`text-${color}-400 group-hover:text-${color}-300 transition-colors duration-300`}>
+                    {title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <div className="flex flex-wrap gap-2">
+                    {skillList.map((skill, skillIndex) => (
+                      <Badge 
+                        key={skill} 
+                        variant="outline" 
+                        className="text-xs border-slate-600 text-slate-300 hover:border-blue-400 hover:text-blue-300 transition-all duration-300 hover:scale-105"
+                        style={{animationDelay: `${skillIndex * 0.05}s`}}
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6 bg-slate-800/50">
+      <section id="projects" className="py-20 px-6 bg-slate-800/30 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center text-transparent bg-tech-gradient bg-clip-text">
+            Featured Projects
+          </h2>
           <div className="grid lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-blue-500 transition-all hover:scale-105">
+              <Card 
+                key={index} 
+                className="bg-slate-800/50 backdrop-blur-sm border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/10 group animate-fade-in-up"
+                style={{animationDelay: `${index * 0.2}s`}}
+              >
                 <CardHeader>
-                  <CardTitle className="text-blue-400">{project.title}</CardTitle>
-                  <CardDescription className="text-slate-300">
+                  <CardTitle className="text-blue-400 group-hover:text-blue-300 transition-colors duration-300">
+                    {project.title}
+                  </CardTitle>
+                  <CardDescription className="text-slate-300 group-hover:text-slate-200 transition-colors duration-300">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-xs">
+                      <Badge key={tech} variant="secondary" className="text-xs hover:scale-105 transition-transform duration-200">
                         {tech}
                       </Badge>
                     ))}
                   </div>
                   <div className="flex space-x-4">
-                    <Button size="sm" variant="outline" asChild>
+                    <Button size="sm" variant="outline" asChild className="hover:scale-105 transition-transform duration-200">
                       <a href={project.demo} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Demo
                       </a>
                     </Button>
-                    <Button size="sm" variant="ghost" asChild>
+                    <Button size="sm" variant="ghost" asChild className="hover:scale-105 transition-transform duration-200">
                       <a href={project.github} target="_blank" rel="noopener noreferrer">
                         <Github className="w-4 h-4 mr-2" />
                         Code
@@ -322,10 +331,16 @@ const Index = () => {
       {/* Experience Section */}
       <section id="experience" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Work Experience</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center text-transparent bg-tech-gradient bg-clip-text">
+            Work Experience
+          </h2>
           <div className="space-y-8">
             {experience.map((exp, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700">
+              <Card 
+                key={index} 
+                className="bg-slate-800/50 backdrop-blur-sm border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10 animate-fade-in-up"
+                style={{animationDelay: `${index * 0.2}s`}}
+              >
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div>
@@ -349,14 +364,22 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-6 bg-slate-800/50">
+      <section id="services" className="py-20 px-6 bg-slate-800/30 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Services Offered</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center text-transparent bg-tech-gradient bg-clip-text">
+            Services Offered
+          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-blue-500 transition-all hover:scale-105 cursor-pointer">
+              <Card 
+                key={index} 
+                className="bg-slate-800/50 backdrop-blur-sm border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer group animate-fade-in-up"
+                style={{animationDelay: `${index * 0.1}s`}}
+              >
                 <CardContent className="p-6 text-center">
-                  <h3 className="font-semibold text-blue-400 mb-2">{service}</h3>
+                  <h3 className="font-semibold text-blue-400 group-hover:text-blue-300 transition-colors duration-300">
+                    {service}
+                  </h3>
                 </CardContent>
               </Card>
             ))}
@@ -367,38 +390,43 @@ const Index = () => {
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8">Let's Work Together</h2>
-          <p className="text-lg text-slate-400 mb-12">
+          <h2 className="text-3xl font-bold mb-8 text-transparent bg-tech-gradient bg-clip-text">
+            Let's Work Together
+          </h2>
+          <p className="text-lg text-slate-400 mb-12 animate-fade-in-up">
             Ready to bring your project to life? Let's discuss how I can help you build something amazing.
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <a href="mailto:shaluthakur4254@gmail.com" className="flex items-center justify-center space-x-3 p-4 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
-              <Mail className="w-5 h-5 text-blue-400" />
-              <span className="text-sm">Email</span>
-            </a>
-            <a href="tel:+918755373668" className="flex items-center justify-center space-x-3 p-4 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
-              <Phone className="w-5 h-5 text-green-400" />
-              <span className="text-sm">Phone</span>
-            </a>
-            <a href="https://linkedin.com/in/shalupundir" className="flex items-center justify-center space-x-3 p-4 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
-              <Linkedin className="w-5 h-5 text-blue-600" />
-              <span className="text-sm">LinkedIn</span>
-            </a>
-            <a href="https://github.com/spDev-stack" className="flex items-center justify-center space-x-3 p-4 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
-              <Github className="w-5 h-5 text-slate-400" />
-              <span className="text-sm">GitHub</span>
-            </a>
+            {[
+              { icon: Mail, href: "mailto:shaluthakur4254@gmail.com", label: "Email", color: "blue" },
+              { icon: Phone, href: "tel:+918755373668", label: "Phone", color: "green" },
+              { icon: Linkedin, href: "https://linkedin.com/in/shalupundir", label: "LinkedIn", color: "blue" },
+              { icon: Github, href: "https://github.com/spDev-stack", label: "GitHub", color: "slate" }
+            ].map(({ icon: Icon, href, label, color }, index) => (
+              <a 
+                key={label}
+                href={href} 
+                className="flex items-center justify-center space-x-3 p-4 bg-slate-800/50 backdrop-blur-sm rounded-lg hover:bg-slate-700/50 transition-all duration-300 hover:scale-105 hover:shadow-lg border border-slate-700/50 hover:border-blue-500/50 group animate-fade-in-up"
+                style={{animationDelay: `${index * 0.1}s`}}
+              >
+                <Icon className={`w-5 h-5 text-${color}-400 group-hover:scale-110 transition-transform duration-300`} />
+                <span className="text-sm group-hover:text-blue-300 transition-colors duration-300">{label}</span>
+              </a>
+            ))}
           </div>
 
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+          <Button 
+            size="lg" 
+            className="bg-tech-gradient hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 animate-fade-in-up"
+          >
             Book a call
           </Button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800 py-8 px-6">
+      <footer className="border-t border-slate-800/50 py-8 px-6 bg-slate-900/50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto text-center text-slate-400">
           <p>&copy; 2024 Shalu Pundir. All rights reserved.</p>
         </div>
