@@ -25,6 +25,17 @@ const Index = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleResumeDownload = () => {
+    // Create a link element and trigger download
+    const link = document.createElement('a');
+    link.href = 'https://ik.imagekit.io/rmlbayysp/1749109197411-WhatsApp_Image_2025-06-05_at_1.04.23_PM_3kYvu9IRg.jpeg';
+    link.download = 'Shalu_Pundir_Resume.jpg';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const skills = {
     frontend: ["HTML5", "CSS3", "JavaScript", "React.js", "Next.js", "Tailwind CSS"],
     backend: ["Node.js", "Nest.js", "Express.js", "REST APIs", "GraphQL"],
@@ -135,7 +146,7 @@ const Index = () => {
                 
                 <h1 className="text-6xl lg:text-7xl font-bold leading-tight text-gray-900">
                   Hi, I'm a<br />
-                  <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-pulse">
+                  <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent animate-pulse">
                     MERN Stack
                   </span><br />
                   developer
@@ -150,10 +161,11 @@ const Index = () => {
               <div className="flex flex-wrap gap-4">
                 <Button 
                   size="lg" 
+                  onClick={handleResumeDownload}
                   className="bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:from-gray-800 hover:to-gray-600 rounded-full px-8 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <Download className="w-4 h-4 mr-2" />
-                  View Resume
+                  Download Resume
                 </Button>
                 <Button 
                   variant="outline" 
@@ -183,11 +195,15 @@ const Index = () => {
 
             <div className="relative animate-fade-in">
               <div className="relative w-96 h-96 mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-200 via-purple-200 to-cyan-200 rounded-3xl transform rotate-6 animate-pulse"></div>
-                <div className="relative w-full h-full bg-gradient-to-br from-white to-gray-50 rounded-3xl flex items-center justify-center border border-gray-200 shadow-2xl">
-                  <Code2 className="w-32 h-32 text-gradient bg-gradient-to-r from-blue-500 to-purple-500" style={{filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.3))'}} />
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200 rounded-3xl transform rotate-6 animate-pulse"></div>
+                <div className="relative w-full h-full bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden border border-gray-200 shadow-2xl">
+                  <img 
+                    src="https://ik.imagekit.io/rmlbayysp/1749109197411-WhatsApp_Image_2025-06-05_at_1.04.23_PM_3kYvu9IRg.jpeg"
+                    alt="Shalu Pundir"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-2xl p-4 shadow-xl border-2 border-white">
+                <div className="absolute -top-4 -right-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-2xl p-4 shadow-xl border-2 border-white">
                   <div className="text-sm font-semibold">3+ Years</div>
                   <div className="text-xs opacity-90">Experience</div>
                 </div>
@@ -264,7 +280,7 @@ const Index = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Frontend", icon: Code2, gradient: "from-blue-500 to-cyan-500", skills: skills.frontend },
+              { title: "Frontend", icon: Code2, gradient: "from-cyan-500 to-blue-500", skills: skills.frontend },
               { title: "Backend", icon: Server, gradient: "from-purple-500 to-pink-500", skills: skills.backend },
               { title: "Database", icon: Database, gradient: "from-emerald-500 to-teal-500", skills: skills.database },
               { title: "Cloud & Tools", icon: Cloud, gradient: "from-orange-500 to-red-500", skills: skills.cloud }
@@ -287,7 +303,7 @@ const Index = () => {
                       <Badge 
                         key={skill} 
                         variant="secondary" 
-                        className="text-xs bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 hover:from-blue-100 hover:to-purple-100 hover:text-blue-700 transition-all duration-200 border border-gray-200"
+                        className="text-xs bg-gradient-to-r from-blue-100 to-purple-100 text-purple-700 hover:from-purple-100 hover:to-pink-100 hover:text-pink-700 transition-all duration-200 border border-purple-200"
                       >
                         {skill}
                       </Badge>
@@ -321,7 +337,7 @@ const Index = () => {
               >
                 <div className={`h-2 bg-gradient-to-r ${project.color}`}></div>
                 <CardHeader>
-                  <CardTitle className="text-xl text-gray-900 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                  <CardTitle className="text-xl text-gray-900 group-hover:bg-gradient-to-r group-hover:from-pink-600 group-hover:to-purple-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                     {project.title}
                   </CardTitle>
                   <CardDescription className="text-gray-600 text-base leading-relaxed">
@@ -331,7 +347,7 @@ const Index = () => {
                 <CardContent className="space-y-4">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-xs bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 border border-gray-200">
+                      <Badge key={tech} variant="secondary" className="text-xs bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 border border-indigo-200">
                         {tech}
                       </Badge>
                     ))}
@@ -411,20 +427,13 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { service: "Backend API Development", gradient: "from-blue-500 to-cyan-500" },
-              { service: "Custom CRM and Dashboard Solutions", gradient: "from-purple-500 to-pink-500" },
-              { service: "Role-Based Authentication & Authorization", gradient: "from-emerald-500 to-teal-500" },
-              { service: "Google API Integrations (OAuth, Calendar)", gradient: "from-orange-500 to-red-500" },
-              { service: "E-commerce Functionality & Payment Gateways", gradient: "from-indigo-500 to-purple-500" },
-              { service: "Microservice Architecture & DevOps", gradient: "from-pink-500 to-rose-500" }
-            ].map(({ service, gradient }, index) => (
+            {services.map((service, index) => (
               <Card 
                 key={index} 
                 className="bg-white/90 backdrop-blur-sm border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-xl cursor-pointer group text-center p-8 hover:scale-105 overflow-hidden relative"
               >
-                <div className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                <h3 className="font-semibold text-gray-900 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300 text-lg relative z-10">
+                <div className={`absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                <h3 className="font-semibold text-gray-900 group-hover:bg-gradient-to-r group-hover:from-pink-600 group-hover:to-purple-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300 text-lg relative z-10">
                   {service}
                 </h3>
               </Card>
@@ -466,7 +475,7 @@ const Index = () => {
 
           <Button 
             size="lg" 
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 rounded-full px-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            className="bg-gradient-to-r from-pink-600 to-purple-600 text-white hover:from-pink-700 hover:to-purple-700 rounded-full px-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
             Book a call
           </Button>
