@@ -178,8 +178,8 @@ const Index = () => {
 
               <div className="flex space-x-4 pt-4">
                 {[
-                  { icon: Github, href: "https://github.com/spDev-stack", color: "hover:text-gray-900" },
-                  { icon: Linkedin, href: "https://linkedin.com/in/shalupundir", color: "hover:text-blue-600" },
+                  { icon: Github, href: "https://github.com/shalupundir", color: "hover:text-gray-900" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/shalupundir/", color: "hover:text-blue-600" },
                   { icon: Mail, href: "mailto:shaluthakur4254@gmail.com", color: "hover:text-purple-600" }
                 ].map(({ icon: Icon, href, color }, index) => (
                   <a 
@@ -457,8 +457,8 @@ const Index = () => {
             {[
               { icon: Mail, href: "mailto:shaluthakur4254@gmail.com", label: "Email", gradient: "from-red-500 to-pink-500" },
               { icon: Phone, href: "tel:+918755373668", label: "Phone", gradient: "from-green-500 to-emerald-500" },
-              { icon: Linkedin, href: "https://linkedin.com/in/shalupundir", label: "LinkedIn", gradient: "from-blue-500 to-cyan-500" },
-              { icon: Github, href: "https://github.com/spDev-stack", label: "GitHub", gradient: "from-gray-700 to-gray-900" }
+              { icon: Linkedin, href: "https://www.linkedin.com/in/shalupundir/", label: "LinkedIn", gradient: "from-blue-500 to-cyan-500" },
+              { icon: Github, href: "https://github.com/shalupundir", label: "GitHub", gradient: "from-gray-700 to-gray-900" }
             ].map(({ icon: Icon, href, label, gradient }, index) => (
               <a 
                 key={label}
