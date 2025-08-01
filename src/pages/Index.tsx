@@ -28,8 +28,8 @@ const Index = () => {
   const handleResumeDownload = () => {
     // Create a link element and trigger download
     const link = document.createElement('a');
-    link.href = 'https://ik.imagekit.io/rmlbayysp/1749109197411-WhatsApp_Image_2025-06-05_at_1.04.23_PM_3kYvu9IRg.jpeg';
-    link.download = 'Shalu_Pundir_Resume.jpg';
+    link.href = '/shalu-resume.pdf'; // Path to your resume file
+    link.download = '/shalu-resume.pdf';
     link.target = '_blank';
     document.body.appendChild(link);
     link.click();
@@ -81,7 +81,7 @@ const Index = () => {
       description: "Building dashboards, CMS-driven websites, and marketing platforms. Mentoring juniors and leading full-stack delivery."
     },
     {
-      title: "Full Stack Developer", 
+      title: "Full Stack Developer",
       company: "Viithisys Technology Pvt Ltd",
       period: "Sep 2022 – Oct 2024",
       description: "Worked on core backend systems and delivered scalable backend solutions for enterprise-level applications."
@@ -90,7 +90,7 @@ const Index = () => {
 
   const services = [
     "Backend API Development",
-    "Custom CRM and Dashboard Solutions", 
+    "Custom CRM and Dashboard Solutions",
     "Role-Based Authentication & Authorization",
     "Google API Integrations (OAuth, Calendar)",
     "E-commerce Functionality & Payment Gateways",
@@ -111,9 +111,8 @@ const Index = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className={`text-sm font-medium transition-all duration-300 hover:text-blue-600 relative ${
-                    activeSection === item.toLowerCase() ? 'text-blue-600' : 'text-gray-600'
-                  }`}
+                  className={`text-sm font-medium transition-all duration-300 hover:text-blue-600 relative ${activeSection === item.toLowerCase() ? 'text-blue-600' : 'text-gray-600'
+                    }`}
                 >
                   {item}
                   {activeSection === item.toLowerCase() && (
@@ -122,9 +121,12 @@ const Index = () => {
                 </a>
               ))}
             </div>
-            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 rounded-full px-6 shadow-lg hover:shadow-xl transition-all duration-300">
-              Book a call
-            </Button>
+            <a
+              href="tel:+918755373668"
+              className="bg-gradient-to-r py-2 from-pink-600 to-purple-600 text-white hover:from-pink-700 hover:to-purple-700 rounded-full px-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              Call Now
+            </a>
           </div>
         </div>
       </nav>
@@ -134,7 +136,7 @@ const Index = () => {
         {/* Background gradient orbs */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-full blur-3xl"></div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8 animate-fade-in">
@@ -143,7 +145,7 @@ const Index = () => {
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                   Available for work
                 </div>
-                
+
                 <h1 className="text-6xl lg:text-7xl font-bold leading-tight text-gray-900">
                   Hi, I'm a<br />
                   <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent animate-pulse">
@@ -151,29 +153,28 @@ const Index = () => {
                   </span><br />
                   developer
                 </h1>
-                
+
                 <p className="text-xl text-gray-600 max-w-lg leading-relaxed">
-                  I have 3+ years of experience working on backend systems and scalable 
+                  I have 3+ years of experience working on backend systems and scalable
                   web applications together with startups and established companies.
                 </p>
               </div>
-              
+
               <div className="flex flex-wrap gap-4">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   onClick={handleResumeDownload}
                   className="bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:from-gray-800 hover:to-gray-600 rounded-full px-8 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download Resume
                 </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="border-2 border-blue-200 text-blue-700 hover:bg-blue-50 hover:border-blue-300 rounded-full px-8 transition-all duration-300"
+                <a
+                  href="mailto:shaluthakur4254@gmail.com"
+                  className="flex justify-center items-center text-center cursor-pointer border-2 border-blue-200 text-blue-700 hover:bg-blue-50 hover:border-blue-300 rounded-full px-8 transition-all duration-300"
                 >
                   Contact Me
-                </Button>
+                </a>
               </div>
 
               <div className="flex space-x-4 pt-4">
@@ -182,9 +183,9 @@ const Index = () => {
                   { icon: Linkedin, href: "https://www.linkedin.com/in/shalupundir/", color: "hover:text-blue-600" },
                   { icon: Mail, href: "mailto:shaluthakur4254@gmail.com", color: "hover:text-purple-600" }
                 ].map(({ icon: Icon, href, color }, index) => (
-                  <a 
+                  <a
                     key={index}
-                    href={href} 
+                    href={href}
                     className={`text-gray-600 ${color} transition-all duration-300 hover:scale-110`}
                   >
                     <Icon className="w-6 h-6" />
@@ -197,8 +198,8 @@ const Index = () => {
               <div className="relative w-96 h-96 mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200 rounded-3xl transform rotate-6 animate-pulse"></div>
                 <div className="relative w-full h-full bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden border border-gray-200 shadow-2xl">
-                  <img 
-                    src="https://ik.imagekit.io/rmlbayysp/1749109197411-WhatsApp_Image_2025-06-05_at_1.04.23_PM_3kYvu9IRg.jpeg"
+                  <img
+                    src="/shalu-port.jpg"
                     alt="Shalu Pundir"
                     className="w-full h-full object-cover"
                   />
@@ -229,15 +230,15 @@ const Index = () => {
               Passionate about building scalable backend systems and crafting intuitive user experiences
             </p>
           </div>
-          
+
           <div className="grid lg:grid-cols-2 gap-16">
             <div className="space-y-6">
               <p className="text-lg text-gray-700 leading-relaxed">
-                I'm passionate about building scalable backend systems and crafting intuitive user experiences. 
-                With expertise in the MERN stack, I specialize in server-side architecture, secure API development, 
+                I'm passionate about building scalable backend systems and crafting intuitive user experiences.
+                With expertise in the MERN stack, I specialize in server-side architecture, secure API development,
                 and real-time applications.
               </p>
-              
+
               <div className="space-y-4">
                 <h3 className="text-2xl font-semibold text-gray-900">Education</h3>
                 <div className="bg-gradient-to-r from-white to-blue-50 p-6 rounded-2xl shadow-sm border border-blue-100 hover:shadow-lg transition-all duration-300">
@@ -247,7 +248,7 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="space-y-6">
               <h3 className="text-2xl font-semibold text-gray-900">Certifications & Awards</h3>
               <div className="space-y-4">
@@ -277,7 +278,7 @@ const Index = () => {
               Technologies I work with on a daily basis
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { title: "Frontend", icon: Code2, gradient: "from-cyan-500 to-blue-500", skills: skills.frontend },
@@ -285,7 +286,7 @@ const Index = () => {
               { title: "Database", icon: Database, gradient: "from-emerald-500 to-teal-500", skills: skills.database },
               { title: "Cloud & Tools", icon: Cloud, gradient: "from-orange-500 to-red-500", skills: skills.cloud }
             ].map(({ title, icon: Icon, gradient, skills: skillList }, index) => (
-              <Card 
+              <Card
                 key={title}
                 className="bg-white/80 backdrop-blur-sm border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-xl hover:scale-105 group"
               >
@@ -300,9 +301,9 @@ const Index = () => {
                 <CardContent className="pt-0">
                   <div className="flex flex-wrap gap-2">
                     {skillList.map((skill) => (
-                      <Badge 
-                        key={skill} 
-                        variant="secondary" 
+                      <Badge
+                        key={skill}
+                        variant="secondary"
                         className="text-xs bg-gradient-to-r from-blue-100 to-purple-100 text-purple-700 hover:from-purple-100 hover:to-pink-100 hover:text-pink-700 transition-all duration-200 border border-purple-200"
                       >
                         {skill}
@@ -328,11 +329,11 @@ const Index = () => {
               Some of the projects I've worked on recently
             </p>
           </div>
-          
+
           <div className="grid lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Card 
-                key={index} 
+              <Card
+                key={index}
                 className="bg-white/90 backdrop-blur-sm border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-2xl hover:scale-105 group overflow-hidden"
               >
                 <div className={`h-2 bg-gradient-to-r ${project.color}`}></div>
@@ -384,11 +385,11 @@ const Index = () => {
               My professional journey so far
             </p>
           </div>
-          
+
           <div className="space-y-8 max-w-4xl mx-auto">
             {experience.map((exp, index) => (
-              <Card 
-                key={index} 
+              <Card
+                key={index}
                 className="bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-lg"
               >
                 <CardHeader>
@@ -425,11 +426,11 @@ const Index = () => {
               How I can help you build your next project
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
-              <Card 
-                key={index} 
+              <Card
+                key={index}
                 className="bg-white/90 backdrop-blur-sm border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-xl cursor-pointer group text-center p-8 hover:scale-105 overflow-hidden relative"
               >
                 <div className={`absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
@@ -452,7 +453,7 @@ const Index = () => {
           <p className="text-xl text-gray-600 mb-12">
             Ready to bring your project to life? Let's discuss how I can help you build something amazing.
           </p>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {[
               { icon: Mail, href: "mailto:shaluthakur4254@gmail.com", label: "Email", gradient: "from-red-500 to-pink-500" },
@@ -460,9 +461,9 @@ const Index = () => {
               { icon: Linkedin, href: "https://www.linkedin.com/in/shalupundir/", label: "LinkedIn", gradient: "from-blue-500 to-cyan-500" },
               { icon: Github, href: "https://github.com/shalupundir", label: "GitHub", gradient: "from-gray-700 to-gray-900" }
             ].map(({ icon: Icon, href, label, gradient }, index) => (
-              <a 
+              <a
                 key={label}
-                href={href} 
+                href={href}
                 className="flex items-center justify-center space-x-3 p-6 bg-white/90 backdrop-blur-sm rounded-2xl hover:bg-white transition-all duration-300 hover:shadow-xl border border-gray-200 hover:border-gray-300 group hover:scale-105"
               >
                 <div className={`p-2 rounded-lg bg-gradient-to-r ${gradient} text-white group-hover:scale-110 transition-transform duration-300`}>
@@ -473,12 +474,12 @@ const Index = () => {
             ))}
           </div>
 
-          <Button 
-            size="lg" 
-            className="bg-gradient-to-r from-pink-600 to-purple-600 text-white hover:from-pink-700 hover:to-purple-700 rounded-full px-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          <a
+            href="tel:+918755373668"
+            className="bg-gradient-to-r py-3 from-pink-600 to-purple-600 text-white hover:from-pink-700 hover:to-purple-700 rounded-full px-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-            Book a call
-          </Button>
+            Call Now
+          </a>
         </div>
       </section>
 
